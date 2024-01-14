@@ -12,8 +12,8 @@ class LayoutTong extends StatelessWidget {
     return  SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
             title: const Text('Bảng giá',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w700),),
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
             actions: [
               IconButton(onPressed: (){}, icon: const Icon(Icons.menu))
             ],
