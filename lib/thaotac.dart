@@ -83,7 +83,7 @@ class ThaoTac extends StatelessWidget{
           ),
           const SizedBox(height: 10,),
           Container(
-            height: 60,
+            height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8)
