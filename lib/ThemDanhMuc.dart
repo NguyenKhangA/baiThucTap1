@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'icon.dart';
+
 void main(){
   runApp(const MyCusTomApp());
 }
@@ -23,9 +25,6 @@ class MyCusTomApp extends StatelessWidget {
           ),
           body: Column(
             children: [
-              Container(
-                height: 5,
-              ),
               Container(
                 color: const Color.fromRGBO(255, 255, 255, 1),
                 padding: const EdgeInsets.only(bottom: 12),
@@ -71,40 +70,41 @@ class MyCusTomApp extends StatelessWidget {
                         ),
                                         ),
                     ),
-                    Container(
-                      height: 400,
-                      margin: const EdgeInsets.only(left: 12,right: 12,top: 12),
-                      child: ListView.builder(
-                        itemCount: 20,
-                          itemBuilder: (BuildContext context,int index){
-                          return  Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text('VIX ',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
-                                          Text(' HOSE',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color.fromRGBO(0, 0, 0, 0.7)),)
-                                        ],
-                                      ),
-                                      Text('Chứng khoán VIX'),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      IconButton(onPressed: (){}, icon: const Icon(Icons.star))
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const Divider(thickness: 0.5,)
-                            ],
-                          );
-                          }
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 12,right: 12,top: 12),
+                        child: ListView.builder(
+                          itemCount: 30,
+                            itemBuilder: (BuildContext context,int index){
+                            return  const Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text('VIX ',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
+                                            Text(' HOSE',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color.fromRGBO(0, 0, 0, 0.7)),)
+                                          ],
+                                        ),
+                                        Text('Chứng khoán VIX'),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        IconScreen()
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Divider(thickness: 0.5,)
+                              ],
+                            );
+                            }
+                        ),
                       ),
                     )
                   ],
