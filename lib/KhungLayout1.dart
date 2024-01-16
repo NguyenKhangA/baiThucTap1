@@ -1,5 +1,6 @@
 
 
+import 'package:baithuctap1/buttonIcon.dart';
 import 'package:baithuctap1/chondanhmuc.dart';
 import 'package:baithuctap1/thaotac.dart';
 import 'package:flutter/material.dart';
@@ -73,63 +74,10 @@ class KhungLayout1 extends StatelessWidget {
                           ],
                         )),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 12),
-                    child: ElevatedButton(onPressed: (){},
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.only(left: 12,right: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)
-                          ),
-                          side: const BorderSide(width: 1,color: Color.fromRGBO(230, 230, 230, 1))
-                        ),
-                        child: const Text('VN30',style: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4),)
-                        )
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 12),
-                    child: ElevatedButton(onPressed: (){},
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.only(left: 12,right: 12),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5)
-                            ),
-                            side: const BorderSide(width: 1,color: Color.fromRGBO(230, 230, 230, 1))
-                        ),
-                        child: const Text('HNX',style: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4),)
-                        )
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 12),
-                    child: ElevatedButton(onPressed: (){},
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.only(left: 12,right: 12),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5)
-                            ),
-                            side: const BorderSide(width: 1,color: Color.fromRGBO(230, 230, 230, 1))
-                        ),
-                        child: const Text('HNX',style: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4),)
-                        )
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 12,right: 12),
-                    child: ElevatedButton(onPressed: (){},
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.only(left: 12,right: 12),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5)
-                            ),
-                            side: const BorderSide(width: 1,color: Color.fromRGBO(230, 230, 230, 1))
-                        ),
-                        child: const Text('HNX',style: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4),)
-                        )
-                    ),
-                  ),
-
+                  ButtonLayout1(label: 'VN30'),
+                  ButtonLayout1(label: 'HNX'),
+                  ButtonLayout1(label: 'VN30'),
+                  ButtonLayout1(label: 'HNX'),
                 ],
               ),
             ),

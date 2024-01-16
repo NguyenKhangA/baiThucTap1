@@ -39,7 +39,7 @@ dependencies:
   flutter_svg: ^2.0.9
 
 dev_dependencies:
-  persistent_bottom_nav_bar: any
+#  persistent_bottom_nav_bar: any
   flutter_test:
     sdk: flutter
 

@@ -55,59 +55,60 @@ class MyCusTomApp extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 8),
-                height: 460,
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(left: 12,right: 12),
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search,size: 36),
-                          hintText: 'Bạn đang tìm kiếm gì',
-                          hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.2))
-                        ),
-                                        ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.only(left: 12,right: 12,top: 12),
-                        child: ListView.builder(
-                          itemCount: 30,
-                            itemBuilder: (BuildContext context,int index){
-                            return  const Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text('VIX ',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
-                                            Text(' HOSE',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color.fromRGBO(0, 0, 0, 0.7)),)
-                                          ],
-                                        ),
-                                        Text('Chứng khoán VIX'),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        IconScreen()
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Divider(thickness: 0.5,)
-                              ],
-                            );
-                            }
-                        ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 12,right: 12),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search,size: 36),
+                            hintText: 'Bạn đang tìm kiếm gì',
+                            hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.2))
+                          ),
+                                          ),
                       ),
-                    )
-                  ],
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 12,right: 12,top: 12),
+                          child: ListView.builder(
+                            itemCount: 30,
+                              itemBuilder: (BuildContext context,int index){
+                              return  const Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text('VIX ',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
+                                              Text(' HOSE',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color.fromRGBO(0, 0, 0, 0.7)),)
+                                            ],
+                                          ),
+                                          Text('Chứng khoán VIX'),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          IconScreen()
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(thickness: 0.5,)
+                                ],
+                              );
+                              }
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],
