@@ -83,18 +83,24 @@ class _ChonDanhMucState extends State<ChonDanhMuc> {
                       final danhmuc = dataDanhMuc[index];
                       return Container(
                         margin: const EdgeInsets.all(12),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(danhmuc['tendanhmuc'],
-                                  style: const TextStyle(fontSize: 16),),
-                                const Icon(Icons.arrow_forward_ios,size: 20,)
-                              ],
-                            ),
-                            const Divider(height: 24,thickness: 0.5,),
-                          ],
+                        child: GestureDetector(
+                          onTap: (){
+                            Provider.of<ListProviderDanhMuc>(context,listen: false).InsertTextDanhMuc(danhmuc);
+                            Navigator.of(context).pop();
+                          },
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(danhmuc['tendanhmuc'],
+                                    style: const TextStyle(fontSize: 16),),
+                                  const Icon(Icons.arrow_forward_ios,size: 20,)
+                                ],
+                              ),
+                              const Divider(height: 24,thickness: 0.5,),
+                            ],
+                          ),
                         ),
                       );
                     }));

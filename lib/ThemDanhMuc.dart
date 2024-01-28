@@ -1,3 +1,4 @@
+import 'package:baithuctap1/layouttong.dart';
 import 'package:baithuctap1/provider/provider_list_danhmuc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -53,6 +54,7 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                             if(newItem.isNotEmpty){
                               Provider.of<ListProviderDanhMuc>(context,listen: false).addDataDanhMuc(newItem);
                               _textEditingController.clear();
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const LayoutTong()));
                               _showSuccessMessage(context);
                             }
                             else{

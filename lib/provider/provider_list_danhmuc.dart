@@ -115,5 +115,21 @@ class ListProviderDanhMuc with ChangeNotifier{
   //   _danhmuc.add(text);
   //   notifyListeners();
   // }
+  // Map<String,dynamic> _object = {};
+  // Map<String,dynamic> get object => _object;
+  // int _selectIntem = -1;
+  // int get selectItem => _selectIntem;
+  // void layDoiTuong(Map<String,dynamic> object){
+  //
+  // }
+  Map<String,dynamic> _object = {};
+  Map<String,dynamic> get object => _object;
+  // String _textDanhMuc = "";
+  // String get textDanhMuc => _textDanhMuc;
+  void InsertTextDanhMuc(Map<String,dynamic> ob){
+    _object = ob;
+    notifyListeners();
+    print('Object: ${_object}');
+  }
 
 }
