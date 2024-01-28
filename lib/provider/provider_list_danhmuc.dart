@@ -34,12 +34,12 @@ class ListProviderDanhMuc with ChangeNotifier{
   //sắp xếp theo id
   void sortListId(){
     if(_isSortAscending){
-      _datas.sort((a,b) => a['san'].compareTo(b['san']));
+      _dataDanhMuc.sort((a,b) => a['cophiues']['san'].compareTo(b['cophiues']['san']));
       _isSortAscending = false;
       //print(data);
     }
     else{
-      _datas.sort((b,a) => a['san'].compareTo(b['san']));
+      _dataDanhMuc.sort((a,b) => a['cophiues']['san'].compareTo(b['cophiues']['san']));
       _isSortAscending = true;
       //print(data);
     }
@@ -49,12 +49,12 @@ class ListProviderDanhMuc with ChangeNotifier{
   //sắp xếp theo giá
   void sortListPrice(){
     if(_isSortAscending){
-      _datas.sort((a,b) => a['price'].compareTo(b['price']));
+      _object['cophiues'].sort((a,b) => a['price'].compareTo(b['price']));
       _isSortAscending = false;
       // print(datas);
     }
     else{
-      _datas.sort((b,a) => a['price'].compareTo(b['price']));
+      _object['cophiues'].sort((a,b) => a['price'].compareTo(b['price'])); 
       _isSortAscending = true;
       // print(datas);
     }
