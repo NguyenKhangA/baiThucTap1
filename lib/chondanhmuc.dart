@@ -1,10 +1,28 @@
+import 'package:baithuctap1/data/global_variebles.dart';
+import 'package:baithuctap1/provider/provider_list_danhmuc.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class ChonDanhMuc extends StatelessWidget{
+class ChonDanhMuc extends StatefulWidget{
   const ChonDanhMuc({super.key});
+
+  @override
+  State<ChonDanhMuc> createState() => _ChonDanhMucState();
+}
+
+class _ChonDanhMucState extends State<ChonDanhMuc> {
+  List<String> displayItemSearch = [];
+
+  TextEditingController _searchItem = TextEditingController();
+
+  @override
+  void initState(){
+    super.initState();
+    displayItemSearch = danhmucs;
+  }
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -37,8 +55,12 @@ class ChonDanhMuc extends StatelessWidget{
             color: const Color.fromRGBO(250, 250, 250, 1),
             borderRadius: BorderRadius.circular(15)
           ),
-          child: const TextField(
-            decoration: InputDecoration(
+          child:  TextField(
+            controller: _searchItem,
+            onChanged: (value){
+              _updateDisplay(value);
+            },
+            decoration: const InputDecoration(
               border: InputBorder.none,
               prefixIcon: Icon(Icons.search,color: Colors.black,),
               hintText: "Tìm kiếm",
@@ -50,30 +72,47 @@ class ChonDanhMuc extends StatelessWidget{
         const SizedBox(
           height: 20,
         ),
-        Container(
-          margin: const EdgeInsets.all(12),
-          child: const Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Xem nhanh 1',style: TextStyle(fontSize: 16),),
-                  Icon(Icons.arrow_forward_ios,size: 20,)
-                ],
-              ),
-              Divider(height: 24,thickness: 0.5,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Đầu tư công',style: TextStyle(fontSize: 16),),
-                  Icon(Icons.arrow_forward_ios,size: 20,)
-                ],
-              ),
-            ],
-          ),
+        Selector<ListProviderDanhMuc,List<Map<String,dynamic>>>(
+          selector: (context,list) => list.dataDanhMuc,
+          shouldRebuild: (p,n)=>true,
+          builder: (context,dataDanhMuc,child){
+            return Expanded(
+                child: ListView.builder(
+                    itemCount: dataDanhMuc.length,
+                    itemBuilder: (context,index){
+                      final danhmuc = dataDanhMuc[index];
+                      return Container(
+                        margin: const EdgeInsets.all(12),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(danhmuc['tendanhmuc'],
+                                  style: const TextStyle(fontSize: 16),),
+                                const Icon(Icons.arrow_forward_ios,size: 20,)
+                              ],
+                            ),
+                            const Divider(height: 24,thickness: 0.5,),
+                          ],
+                        ),
+                      );
+                    }));
+          },
         )
+
       ],
     );
   }
-
+  void _updateDisplay(String value) {
+    setState(() {
+      if(value.isEmpty){
+        displayItemSearch = danhmucs;
+      }
+      else{
+        displayItemSearch = danhmucs.where((element) => element.toLowerCase().contains(value.toLowerCase())).toList();
+      }
+    });
+  }
 }
+

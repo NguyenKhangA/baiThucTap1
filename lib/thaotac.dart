@@ -1,8 +1,15 @@
 import 'package:baithuctap1/ThemDanhMuc.dart';
+import 'package:baithuctap1/data/global_variebles.dart';
 import 'package:flutter/material.dart';
 
-class ThaoTac extends StatelessWidget{
+class ThaoTac extends StatefulWidget{
   const ThaoTac({super.key});
+
+  @override
+  State<ThaoTac> createState() => _ThaoTacState();
+}
+
+class _ThaoTacState extends State<ThaoTac> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -54,7 +61,10 @@ class ThaoTac extends StatelessWidget{
                           ),
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => MyCusTomApp()));
+                            },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(0)
@@ -66,7 +76,8 @@ class ThaoTac extends StatelessWidget{
                         Expanded(child: Container(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                            },
                             style: ElevatedButton.styleFrom(
                               shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(bottomRight: Radius.circular(10),bottomLeft: Radius.circular(10))
@@ -104,5 +115,4 @@ class ThaoTac extends StatelessWidget{
       ),
     );
   }
-
 }

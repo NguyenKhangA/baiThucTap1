@@ -10,7 +10,7 @@ class KhungLayout1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 56,
       child: Container(
         margin: const EdgeInsets.only(top: 12,bottom: 12,left: 12),
@@ -26,7 +26,7 @@ class KhungLayout1 extends StatelessWidget {
                     useRootNavigator: true,
                     backgroundColor: Colors.transparent,
                       context: context, builder: (BuildContext context){
-                    return ThaoTac();
+                    return const ThaoTac();
                   });
                 },
                     style: ElevatedButton.styleFrom(
@@ -40,49 +40,60 @@ class KhungLayout1 extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: ListView(
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const AlwaysScrollableScrollPhysics(),
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 8),
-                    child: ElevatedButton(
-                        onPressed: (){
-                          showModalBottomSheet(context: context,
-                              useRootNavigator: true,
-                              builder: (BuildContext context){
-                            return Container(
-                              height: 400,
-                              decoration:const BoxDecoration(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40))
+                itemCount: 1,
+                itemBuilder: (context,index) {
+                  return Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 8),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                showModalBottomSheet(context: context,
+                                    useRootNavigator: true,
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        height: 400,
+                                        decoration: const BoxDecoration(
+                                            color: Color.fromRGBO(
+                                                255, 255, 255, 1),
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(40),
+                                                topRight: Radius.circular(40))
+                                        ),
+                                        child: const ChonDanhMuc(),
+                                      );
+                                    });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color.fromRGBO(
+                                    40, 60, 145, 1),
+                                padding: const EdgeInsets.only(
+                                    left: 10, right: 10),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)
+                                ),
                               ),
-                              child: const ChonDanhMuc(),
-                            );
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(40, 60, 145, 1),
-                          padding: const EdgeInsets.only(left: 10,right: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)
-                          ),
+                              child: const Row(
+                                children: [
+                                  Text('Danh mục yêu thích',
+                                    style: TextStyle(color: Colors.white),),
+                                  Icon(
+                                    Icons.arrow_drop_down, color: Colors.white,)
+                                ],
+                              )),
                         ),
-                        child: const Row(
-                          children: [Text('Danh mục yêu thích',style: TextStyle(color: Colors.white),),
-                          Icon(Icons.arrow_drop_down,color: Colors.white,)
-                          ],
-                        )),
-                  ),
-                  ButtonLayout1(label: 'VN30'),
-                  ButtonLayout1(label: 'HNX'),
-                  ButtonLayout1(label: 'VN30'),
-                  ButtonLayout1(label: 'HNX'),
-                ],
-              ),
-            ),
-            const Divider(thickness: 1,)
-          ],
+                        const ButtonLayout1(label: 'VN30'),
+                        const ButtonLayout1(label: 'HNX'),
+                        const ButtonLayout1(label: 'VN30'),
+                        const ButtonLayout1(label: 'HNX'),
+                      ]
+                  );
+                }
+            )
+    )],
         ),
       ),
     );

@@ -1,11 +1,9 @@
 import 'package:baithuctap1/home.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:baithuctap1/provider/provider_list_danhmuc.dart';
 import 'package:flutter/material.dart';
 
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
 
-import 'layouttong.dart';
-import 'screen1.dart';
 
 void main()
 {
@@ -17,9 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
+    return  ChangeNotifierProvider(
+      create: (context) => ListProviderDanhMuc(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+      ),
     );
   }
 }
