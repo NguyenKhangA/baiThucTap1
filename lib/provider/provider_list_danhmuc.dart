@@ -34,12 +34,12 @@ class ListProviderDanhMuc with ChangeNotifier{
   //sắp xếp theo id
   void sortListId(){
     if(_isSortAscending){
-      _dataDanhMuc.sort((a,b) => a['cophiues']['san'].compareTo(b['cophiues']['san']));
+      _cartCopy.sort((a,b) => a['san'].compareTo(b['san']));
       _isSortAscending = false;
       //print(data);
     }
     else{
-      _dataDanhMuc.sort((a,b) => a['cophiues']['san'].compareTo(b['cophiues']['san']));
+      _cartCopy.sort((b,a) => a['san'].compareTo(b['san']));
       _isSortAscending = true;
       //print(data);
     }
@@ -49,14 +49,14 @@ class ListProviderDanhMuc with ChangeNotifier{
   //sắp xếp theo giá
   void sortListPrice(){
     if(_isSortAscending){
-      _object['cophiues'].sort((a,b) => a['price'].compareTo(b['price']));
+      _cartCopy.sort((a,b) => a['price'].compareTo(b['price']));
       _isSortAscending = false;
-      // print(datas);
+       // print(_object);
     }
     else{
-      _object['cophiues'].sort((a,b) => a['price'].compareTo(b['price'])); 
+      _cartCopy.sort((b,a) => a['price'].compareTo(b['price']));
       _isSortAscending = true;
-      // print(datas);
+      // print(_object);
     }
     notifyListeners();
   }
@@ -64,12 +64,11 @@ class ListProviderDanhMuc with ChangeNotifier{
   //sắp xếp theo khôi lượng
   void sortListWeight(){
     if(_isSortAscending){
-      _datas.sort((a,b) => a['weight'].compareTo(b['weight']));
+      _cartCopy.sort((a,b) => a['weight'].compareTo(b['weight']));
       _isSortAscending = false;
-      // print(datas);
     }
     else{
-      _datas.sort((b,a) => a['weight'].compareTo(b['weight']));
+      _cartCopy.sort((b,a) => a['weight'].compareTo(b['weight']));
       _isSortAscending = true;
       // print(datas);
     }
@@ -104,24 +103,11 @@ class ListProviderDanhMuc with ChangeNotifier{
       'tendanhmuc' : text,
       'cophiues' : _cartCopy
     });
-    print(_dataDanhMuc);
+     _object = _dataDanhMuc.last;
+    // print(_dataDanhMuc);
     notifyListeners();
   }
 
-  // List<String> _danhmuc = danhmucs;
-  // List<String> get danhmuc => _danhmuc;
-  // String _bien = '';
-  // void addDanhMuc(String text){
-  //   _danhmuc.add(text);
-  //   notifyListeners();
-  // }
-  // Map<String,dynamic> _object = {};
-  // Map<String,dynamic> get object => _object;
-  // int _selectIntem = -1;
-  // int get selectItem => _selectIntem;
-  // void layDoiTuong(Map<String,dynamic> object){
-  //
-  // }
   Map<String,dynamic> _object = {};
   Map<String,dynamic> get object => _object;
   // String _textDanhMuc = "";
@@ -129,7 +115,19 @@ class ListProviderDanhMuc with ChangeNotifier{
   void InsertTextDanhMuc(Map<String,dynamic> ob){
     _object = ob;
     notifyListeners();
-    print('Object: ${_object}');
+    // print('Object: ${_object}');
   }
-
+  void updateDanhMuc(String text){
+    _cartCopy = List<Map<String,dynamic>>.from(_cart);
+    _object['tendanhmuc'] = text;
+    _object['cophiues'] = _cartCopy;
+    notifyListeners();
+    // print('Object: ${_object}');
+  }
+  void removeDanhMuc(){
+    _object.clear();
+    _object = _dataDanhMuc.first;
+    // print(_object);
+    notifyListeners();
+  }
 }

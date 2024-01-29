@@ -20,6 +20,7 @@ class _State extends State<SapXep> {
               padding: const EdgeInsets.only(right: 8),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  // padding: EdgeInsets.only(left: 20,right: 10),
                   backgroundColor: Provider.of<ListProviderDanhMuc>(context).isColorButton1
                     ?Color.fromRGBO(40, 60, 145, 1)
                     : Colors.white,
@@ -28,6 +29,7 @@ class _State extends State<SapXep> {
                   )
                 ),
                 onPressed: (){
+                  bool isActiveIcon =  Provider.of<ListProviderDanhMuc>(context,listen: false).isSortAscending;
                   Provider.of<ListProviderDanhMuc>(context,listen: false).sortListId();
                   Provider.of<ListProviderDanhMuc>(context,listen: false).activeButton1();
                 },

@@ -17,7 +17,7 @@ class ListViewKhung2 extends StatelessWidget{
                   return Expanded(child: Container());
                 }
                 else{
-                  if(datas['cophiues'] == []){
+                  if(datas['cophiues'] == null){
                     return Container();
                   }
                   else{

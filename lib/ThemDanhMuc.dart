@@ -1,3 +1,4 @@
+import 'package:baithuctap1/home.dart';
 import 'package:baithuctap1/layouttong.dart';
 import 'package:baithuctap1/provider/provider_list_danhmuc.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                             if(newItem.isNotEmpty){
                               Provider.of<ListProviderDanhMuc>(context,listen: false).addDataDanhMuc(newItem);
                               _textEditingController.clear();
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const LayoutTong()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Home()));
                               _showSuccessMessage(context);
                             }
                             else{
@@ -128,7 +129,10 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                                             ),
                                             Icon(item['isSave'] == 1
                                                 ? Icons.star
-                                                : Icons.star_border_outlined
+                                                : Icons.star_border_outlined,
+                                              color: item['isSave'] == 1
+                                                  ? Colors.orangeAccent
+                                                  : null,
                                             ),
                                           ],
                                         ),

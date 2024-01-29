@@ -1,6 +1,9 @@
 import 'package:baithuctap1/ThemDanhMuc.dart';
 import 'package:baithuctap1/data/global_variebles.dart';
+import 'package:baithuctap1/provider/provider_list_danhmuc.dart';
+import 'package:baithuctap1/sua_danhmuc.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ThaoTac extends StatefulWidget{
   const ThaoTac({super.key});
@@ -63,7 +66,7 @@ class _ThaoTacState extends State<ThaoTac> {
                           child: ElevatedButton(
                             onPressed: (){
                               Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => MyCusTomApp()));
+                              MaterialPageRoute(builder: (context) => SuaDanhMuc()));
                             },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -77,6 +80,7 @@ class _ThaoTacState extends State<ThaoTac> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: (){
+                              Provider.of<ListProviderDanhMuc>(context,listen: false).removeDanhMuc();
                             },
                             style: ElevatedButton.styleFrom(
                               shape: const RoundedRectangleBorder(
