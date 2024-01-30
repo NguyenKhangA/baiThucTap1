@@ -39,9 +39,12 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                       margin:const EdgeInsets.only(left: 12,right: 12),
                       child: TextField(
                         controller: _textEditingController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: "Tên danh mục",
-                          hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4),fontSize: 16)
+                          hintStyle: const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4),fontSize: 16),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.withOpacity(0.5))
+                          )
                         ),
                       ),
                     ),
@@ -61,6 +64,7 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                             else{
                               _showErrorMessage(context, 'Tên danh mục không được để trống');
                             }
+                            Provider.of<ListProviderDanhMuc>(context,listen: false).setData();
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -79,14 +83,17 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                   child: Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 12,right: 12),
-                        child: const TextField(
+                        margin: const EdgeInsets.only(left: 12,right: 12,bottom: 12),
+                        child: TextField(
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search,size: 36),
+                            prefixIcon: const Icon(Icons.search,size: 36),
                             hintText: 'Bạn đang tìm kiếm gì',
-                            hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.2))
+                            hintStyle: const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.2)),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey.withOpacity(0.5))
+                            )
                           ),
-                                          ),
+                        ),
                       ),
                       Expanded(
                         child: Selector<ListProviderDanhMuc,List<Map<String,dynamic>>>(
@@ -107,37 +114,40 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
                                         Provider.of<ListProviderDanhMuc>(context,listen: false).removeItem(item);
                                       }
                                     },
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      item['san'],
-                                                      style: const TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
-                                                    Text(' ${item['name']}',
-                                                      style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color.fromRGBO(0, 0, 0, 0.7)),)
-                                                  ],
-                                                ),
-                                                Text(item['company']),
-                                              ],
-                                            ),
-                                            Icon(item['isSave'] == 1
-                                                ? Icons.star
-                                                : Icons.star_border_outlined,
-                                              color: item['isSave'] == 1
-                                                  ? Colors.orangeAccent
-                                                  : null,
-                                            ),
-                                          ],
-                                        ),
-                                        const Divider(thickness: 0.5,)
-                                      ],
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        item['san'],
+                                                        style: const TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
+                                                      Text(' ${item['name']}',
+                                                        style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 14,color: Color.fromRGBO(0, 0, 0, 0.7)),)
+                                                    ],
+                                                  ),
+                                                  Text(item['company']),
+                                                ],
+                                              ),
+                                              Icon(item['isSave'] == 1
+                                                  ? Icons.star
+                                                  : Icons.star_border_outlined,
+                                                color: item['isSave'] == 1
+                                                    ? Colors.orangeAccent
+                                                    : null,
+                                              ),
+                                            ],
+                                          ),
+                                          const Divider(thickness: 0.5,)
+                                        ],
+                                      ),
                                     ),
                                   );
                                 }
@@ -178,10 +188,16 @@ class _MyCusTomAppState extends State<MyCusTomApp> {
         return AlertDialog(
           title: const Text('Thêm thành công'),
           actions: [
-            TextButton(onPressed: (){
-              Navigator.of(context).pop();
-            },
-                child: const Text('Đóng'))
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(onPressed: (){
+                Navigator.of(context).pop();
+              },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(40, 60, 145, 1),
+                  ),
+                  child: const Text('Đóng',style: TextStyle(color: Colors.white),)),
+            )
           ],
         );
       });

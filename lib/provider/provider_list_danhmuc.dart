@@ -125,9 +125,22 @@ class ListProviderDanhMuc with ChangeNotifier{
     // print('Object: ${_object}');
   }
   void removeDanhMuc(){
-    _object.clear();
-    _object = _dataDanhMuc.first;
+    _dataDanhMuc.removeWhere((element) => element['tendanhmuc'] == _object['tendanhmuc']);
+    if(_dataDanhMuc.isNotEmpty) {
+      _object = _dataDanhMuc.first;
+    }
+    else{
+      _object.clear();
+    }
     // print(_object);
     notifyListeners();
   }
+
+  void setData(){
+    _datas.forEach((element) {
+      element['isSave'] = 0;
+    });
+    notifyListeners();
+  }
+
 }

@@ -1,5 +1,6 @@
 import 'package:baithuctap1/ThemDanhMuc.dart';
 import 'package:baithuctap1/data/global_variebles.dart';
+import 'package:baithuctap1/home.dart';
 import 'package:baithuctap1/provider/provider_list_danhmuc.dart';
 import 'package:baithuctap1/sua_danhmuc.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class _ThaoTacState extends State<ThaoTac> {
                           child: ElevatedButton(
                             onPressed: (){
                               Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => MyCusTomApp()));
+                              MaterialPageRoute(builder: (context) => const MyCusTomApp()));
                             },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -66,7 +67,7 @@ class _ThaoTacState extends State<ThaoTac> {
                           child: ElevatedButton(
                             onPressed: (){
                               Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => SuaDanhMuc()));
+                              MaterialPageRoute(builder: (context) => const SuaDanhMuc()));
                             },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -76,11 +77,12 @@ class _ThaoTacState extends State<ThaoTac> {
                             child: const Text('Chỉnh sửa danh mục',style: TextStyle(fontSize: 16,color: Colors.black)),
                           ),
                         )),
-                        Expanded(child: Container(
+                        Expanded(child: SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: (){
                               Provider.of<ListProviderDanhMuc>(context,listen: false).removeDanhMuc();
+                              _showErrorMessage(context);
                             },
                             style: ElevatedButton.styleFrom(
                               shape: const RoundedRectangleBorder(
@@ -119,4 +121,25 @@ class _ThaoTacState extends State<ThaoTac> {
       ),
     );
   }
+}
+_showErrorMessage(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: const Text('Xóa thành công'),
+          actions: [
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Home()));
+              },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(40, 60, 145, 1)
+                  ),
+                  child: const Text('Đóng',style: TextStyle(color: Colors.white),)),
+            )
+          ],
+        );
+      });
 }

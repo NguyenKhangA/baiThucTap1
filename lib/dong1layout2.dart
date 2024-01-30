@@ -22,7 +22,7 @@ class _State extends State<SapXep> {
                 style: ElevatedButton.styleFrom(
                   // padding: EdgeInsets.only(left: 20,right: 10),
                   backgroundColor: Provider.of<ListProviderDanhMuc>(context).isColorButton1
-                    ?Color.fromRGBO(40, 60, 145, 1)
+                    ?const Color.fromRGBO(40, 60, 145, 1)
                     : Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)
@@ -38,7 +38,7 @@ class _State extends State<SapXep> {
                   style: TextStyle(
                     color: Provider.of<ListProviderDanhMuc>(context).isColorButton1
                         ? Colors.white
-                        : Color.fromRGBO(0, 0, 0, 0.4)
+                        : const Color.fromRGBO(0, 0, 0, 0.4)
                   ),
                 ),
               ),
@@ -48,7 +48,7 @@ class _State extends State<SapXep> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Provider.of<ListProviderDanhMuc>(context).isColorButton2
-                    ? Color.fromRGBO(40, 60, 145, 1)
+                    ? const Color.fromRGBO(40, 60, 145, 1)
                     : Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)
@@ -63,7 +63,7 @@ class _State extends State<SapXep> {
                   style: TextStyle(
                       color: Provider.of<ListProviderDanhMuc>(context).isColorButton2
                           ? Colors.white
-                          : Color.fromRGBO(0, 0, 0, 0.4)
+                          : const Color.fromRGBO(0, 0, 0, 0.4)
                   ),
                 ),
               ),
@@ -72,9 +72,9 @@ class _State extends State<SapXep> {
               padding: const EdgeInsets.only(right: 8),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                     backgroundColor: Provider.of<ListProviderDanhMuc>(context).isColorButton3
-                        ? Color.fromRGBO(40, 60, 145, 1)
+                        ? const Color.fromRGBO(40, 60, 145, 1)
                         : Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)
@@ -89,7 +89,7 @@ class _State extends State<SapXep> {
                   style: TextStyle(
                       color: Provider.of<ListProviderDanhMuc>(context).isColorButton3
                           ? Colors.white
-                          : Color.fromRGBO(0, 0, 0, 0.4)
+                          : const Color.fromRGBO(0, 0, 0, 0.4)
                   ),
                 ),
               ),
